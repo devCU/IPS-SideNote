@@ -36,7 +36,21 @@
 
 # IPS-SideNote
 
-#### A multi configurable message and information plug-in for IPS 4 Community Suite
+#### A multi configurable, highly customizable and immediately visible message and information plug-in for IPS 4 Community Suite
+
+![devCUHead](https://www.devcu.net/mediasrc/example1.PNG?V=1.0)
+
+![devCUHead](https://www.devcu.net/mediasrc/githubhead_2.gif?V=1.0)
+
+## Features
+
+- Modal sizes: Narrow, Medium, Large, Full screem
+- Page Preferences - White/Black list options
+- Custom FontAwesome icons
+- Custom Colors and look
+- Mesage box with date and time stamps
+- Hover effects, blinking icon effects, etc
+- More...
 
 ## ** Updated Notes **
 
