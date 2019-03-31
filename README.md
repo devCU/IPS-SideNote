@@ -47,6 +47,9 @@
 - Hover effects, blinking icon effects, etc
 - More...
 
+## Install
+Import SideNote.xml via Install New Plugin in IPS ACP
+
 ## ** Updated Notes **
 
 03/30/19
