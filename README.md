@@ -40,7 +40,7 @@
 
 ![devCUHead](https://www.devcu.net/mediasrc/example1.PNG?V=1.0)
 
-![devCUHead](https://www.devcu.net/mediasrc/githubhead_2.gif?V=1.0)
+![devCUHead](https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0)
 
 ## Features
 
