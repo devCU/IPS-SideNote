@@ -31,7 +31,7 @@
 
 # IPS-SideNote
 
-#### A multi configurable, highly customizable and immediately visible message and information plug-in for IPS 4 Community Suite
+#### Inspired by IPS dev mode message, SideNote is a highly customizable and immediately visible plug-in for IPS 4 Community Suite. A colorful (Side) bar that pops up a (Note) message on click. Out of the way to the side but instantly noticed. Visitors to your site will click on this first everytime. Can be used for anything including site information, holiday greetings, announcements, special offers/advertisements and anything else you want to make your sites visitors of.
 
 ![devCUHead](https://www.devcu.net/mediasrc/example1.PNG?V=1.0)
 
