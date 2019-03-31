@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin name="SideNote" version_long="10000" version_human="1.0.0" author="G Cornell for devCU" website="https://devcu.com" update_check="https://updates.devcu.com/ips/sidenote/appcheck.php"><hooks><hook type="S" class="\IPS\Theme\class_core_front_global" filename="sdn_notification"><![CDATA[//<?php
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !\defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	exit;
+}
+
+class hook28 extends _HOOK_CLASS_
+{
+
+/* !Hook Data - DO NOT REMOVE */
+public static function hookData() {
+ return array_merge_recursive( array (
+  'globalTemplate' => 
+  array (
+    0 => 
+    array (
+      'selector' => '#ipsLayout_header',
+      'type' => 'add_before',
+      'content' => '{template="SideNoteMessage" group="plugins" location="global" app="core"}',
+    ),
+  ),
+), parent::hookData() );
+}
+/* End Hook Data */
+
+
+}
+]]></hook><hook type="C" class="\IPS\core\modules\front\system\plugins" filename="sdn_dismissnotification"><![CDATA[//<?php
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !\defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	exit;
+}
+
+class hook29 extends _HOOK_CLASS_
+{
+public function SideNoteDismiss()
+    {
+	try
+	{
+		try
+		{
+			try
+			{
+				try
+				{
+					try
+					{
+							\IPS\Session::i()->csrfCheck();
+							
+							if ( \IPS\Member::loggedIn()->member_id )
+							{
+								\IPS\Member::loggedIn()->SideNoteMessage_dismissed = TRUE;
+								\IPS\Member::loggedIn()->save();
+							}
+							else
+							{
+								\IPS\Request::i()->setCookie( 'SideNoteMessage_dismissed', TRUE );
+							}
+							
+							if ( \IPS\Request::i()->isAjax() )
+							{
+								\IPS\Output::i()->sendOutput( NULL, 200 );
+							}
+							else
+							{
+								\IPS\Output::i()->redirect( isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : \IPS\Http\Url::internal( '' ) );
+							}
+						}
+						catch ( \RuntimeException $e )
+						{
+							if ( method_exists( get_parent_class(), __FUNCTION__ ) )
+							{
+								return call_user_func_array( 'parent::' . __FUNCTION__, func_get_args() );
+							}
+							else
+							{
+								throw $e;
+							}
+						}
+					}
+					catch ( \RuntimeException $e )
+					{
+						if ( method_exists( get_parent_class(), __FUNCTION__ ) )
+						{
+							return call_user_func_array( 'parent::' . __FUNCTION__, func_get_args() );
+						}
+						else
+						{
+							throw $e;
+						}
+					}
+				}
+				catch ( \RuntimeException $e )
+				{
+					if ( method_exists( get_parent_class(), __FUNCTION__ ) )
+					{
+						return call_user_func_array( 'parent::' . __FUNCTION__, func_get_args() );
+					}
+					else
+					{
+						throw $e;
+					}
+				}
+			}
+			catch ( \RuntimeException $e )
+			{
+				if ( method_exists( get_parent_class(), __FUNCTION__ ) )
+				{
+					return call_user_func_array( 'parent::' . __FUNCTION__, func_get_args() );
+				}
+				else
+				{
+					throw $e;
+				}
+			}
+		}
+		catch ( \RuntimeException $e )
+		{
+			if ( method_exists( get_parent_class(), __FUNCTION__ ) )
+			{
+				return call_user_func_array( 'parent::' . __FUNCTION__, func_get_args() );
+			}
+			else
+			{
+				throw $e;
+			}
+		}
+	}
+
+}]]></hook></hooks><settings><setting><key>sdn_enabled</key><default>0</default></setting><setting><key>sdn_title</key><default/></setting><setting><key>sdn_lgdesc</key><default/></setting><setting><key>sdn_stdesc</key><default/></setting><setting><key>sdn_fonticon</key><default>f071</default></setting><setting><key>sdn_background_color</key><default>#FFF</default></setting><setting><key>sdn_stripe_color</key><default>#f4b738</default></setting><setting><key>sdn_sidebar_width</key><default>10</default></setting><setting><key>sdn_fonticon_size</key><default>25</default></setting><setting><key>sdn_fonticon_color</key><default>#FFFFFF</default></setting><setting><key>sdn_fonticon_hovercolor</key><default>#bbb6b6</default></setting><setting><key>sdn_groups</key><default/></setting><setting><key>sdn_hide</key><default>0</default></setting><setting><key>sdn_date_start</key><default/></setting><setting><key>sdn_date_end</key><default/></setting><setting><key>sdn_modal_size</key><default>medium</default></setting><setting><key>sdn_infobox_enabled</key><default>0</default></setting><setting><key>sdn_infobox_content</key><default/></setting><setting><key>sdn_infobox_fonticon</key><default>f05a</default></setting><setting><key>sdn_infobox_fonticon_size</key><default>15</default></setting><setting><key>sdn_infobox_color</key><default>#326196</default></setting><setting><key>sdn_infobox_showtime</key><default>0</default></setting><setting><key>sdn_fonticon_blink</key><default>0</default></setting><setting><key>sdn_sidebar_hide</key><default>0</default></setting><setting><key>sdn_tab_color</key><default>#f4b738</default></setting><setting><key>sdn_tab_sizew</key><default>60</default></setting><setting><key>sdn_tab_sizeh</key><default>50</default></setting><setting><key>sdn_tab_radius</key><default>30</default></setting><setting><key>sdn_tab_position</key><default>bottom</default></setting><setting><key>sdn_tab_window</key><default>10</default></setting><setting><key>sdn_configure_pages_type</key><default>0</default></setting><setting><key>sdn_configure_pages_list</key><default/></setting></settings><settingsCode><![CDATA[//<?php
+
+$form->addTab('sdn_configure');
+$form->addHeader( 'sdn_configure' );
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_enabled', \IPS\Settings::i()->sdn_enabled, FALSE, array( 'togglesOn' => array( 'sdn_groups_id', 'sdn_hide', 'sdn_date_start', 'sdn_date_end' ) ), NULL, NULL, NULL, 'sdn_enabled') );
+$form->add( new \IPS\Helpers\Form\Select( 'sdn_groups', \IPS\Settings::i()->sdn_groups == 'all' ? "all" : explode( ',' , \IPS\Settings::i()->sdn_groups ), FALSE, array( 'options' => \IPS\Member\Group::groups(TRUE, TRUE), 'parse' => 'normal', 'multiple' => TRUE, 'unlimited' => 'all', 'unlimitedLang' => 'all_groups' ), NULL, NULL, NULL, 'sdn_groups_id' ) );
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_hide', \IPS\Settings::i()->sdn_hide, FALSE, array(), NULL, NULL, NULL, 'sdn_hide') );
+$form->add( new \IPS\Helpers\Form\Select( 'sdn_modal_size', \IPS\Settings::i()->sdn_modal_size, FALSE, array(
+	'options' => array(
+		'narrow'         => 'sdn_modal_size_narrow',
+		'medium'       => 'sdn_modal_size_medium',
+		'large'            => 'sdn_modal_size_large',
+		'wide'             => 'sdn_modal_size_wide',
+		'fullscreen'    => 'sdn_modal_size_fullscreen'
+	),
+'multiple' => FALSE) ) );
+
+$form->addSeparator();
+$form->addHeader( 'sdn_configure_pages' );
+
+/* Page List Type */
+$form->add( new \IPS\Helpers\Form\Select( 'sdn_configure_pages_type', \IPS\Settings::i()->sdn_configure_pages_type, FALSE, array(
+	'options' => array(
+		0 => 'sdn_configure_pages_typew', 
+		1 => 'sdn_configure_pages_typeb'
+	),
+'multiple' => FALSE) ) );
+
+$form->add( new \IPS\Helpers\Form\TextArea( 'sdn_configure_pages_list', \IPS\Settings::i()->sdn_configure_pages_list, FALSE, array(), NULL, NULL, NULL, 'sdn_configure_pages_list') );
+
+/* $form->addHeader('ebsGlobalMessage_header_URL');
+
+Show Admin Message
+$form->add( new \IPS\Helpers\Form\YesNo( 'ebsGlobalMessage_admin_visible', \IPS\Settings::i()->ebsGlobalMessage_admin_visible, FALSE, array(), NULL, NULL, NULL, 'ebsGlobalMessage_admin_visible') );
+
+Admin Message Groups
+$form->add( new \IPS\Helpers\Form\Select( 'ebsGlobalMessage_admin_groups', explode( ',' , \IPS\Settings::i()->ebsGlobalMessage_admin_groups ), FALSE, array( 'options' => \IPS\Member\Group::groups(TRUE, FALSE), 'parse' => 'normal', 'multiple' => TRUE ), NULL, NULL, NULL, 'ebsGlobalMessage_admin_groups' ) );
+*/
+$form->addTab('sdn_content');
+$form->addHeader( 'sdn_content' );
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\Text( 'sdn_title', \IPS\Settings::i()->sdn_title, FALSE, array(), NULL, NULL, NULL, 'sdn_title' ) );
+$form->add( new \IPS\Helpers\Form\Text( 'sdn_stdesc', \IPS\Settings::i()->sdn_stdesc, FALSE, array(), NULL, NULL, NULL, 'sdn_stdesc' ) );
+$form->add(new \IPS\Helpers\Form\Translatable('sdn_lgdesc', NULL, FALSE, array( 'app' => 'core', 'key' => 'sdn_lgdesc_value', 'editor' => array( 'app' => 'core', 'key' => 'Admin', 'autoSaveKey' => 'sdn_lgdesc') ), NULL, NULL, NULL, 'sdn_lgdesc_id' ) );
+$form->add( new \IPS\Helpers\Form\Date( 'sdn_date_start', ( \IPS\Settings::i()->sdn_date_start ) ? \IPS\DateTime::ts( \IPS\Settings::i()->sdn_date_start ) : new \IPS\DateTime, TRUE, array(), NULL, NULL, NULL, 'sdn_date_start' ) );
+$form->add( new \IPS\Helpers\Form\Date( 'sdn_date_end', (\IPS\Settings::i()->sdn_date_end ? \IPS\DateTime::ts( \IPS\Settings::i()->sdn_date_end) : 0), FALSE, array( 'unlimited' => 0, 'unlimitedLang' => 'indefinitely' ), NULL, NULL, NULL, 'sdn_date_end' ) );
+
+$form->addTab('sdn_infobox');
+$form->addHeader( 'sdn_infobox' );
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_infobox_enabled', \IPS\Settings::i()->sdn_infobox_enabled, FALSE, array( 'togglesOn' => array( 'sdn_infobox_content', 'sdn_infobox_showtime', 'sdn_infobox_color', 'sdn_infobox_fonticon', 'sdn_infobox_fonticon_size' ) ), NULL, NULL, NULL, 'sdn_infobox_enabled') );
+$form->add( new \IPS\Helpers\Form\Text( 'sdn_infobox_content', \IPS\Settings::i()->sdn_infobox_content, FALSE, array(), NULL, NULL, NULL, 'sdn_infobox_content' ) );
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_infobox_showtime', \IPS\Settings::i()->sdn_infobox_showtime, FALSE, array(), NULL, NULL, NULL, 'sdn_infobox_showtime') );
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_infobox_color', \IPS\Settings::i()->sdn_infobox_color, FALSE, array(), NULL, NULL, NULL, 'sdn_infobox_color' ) );
+$form->add( new \IPS\Helpers\Form\Text( 'sdn_infobox_fonticon', \IPS\Settings::i()->sdn_infobox_fonticon, FALSE, array(), NULL, NULL, NULL, 'sdn_infobox_fonticon' ) );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_infobox_fonticon_size', \IPS\Settings::i()->sdn_infobox_fonticon_size, FALSE, array(), NULL, NULL, NULL, 'sdn_infobox_fonticon_size' ) );
+
+$form->addTab('sdn_custom_tab');
+$form->addHeader( 'sdn_custom' );
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_tab_color', \IPS\Settings::i()->sdn_tab_color, FALSE, array(), NULL, NULL, NULL, 'sdn_tab_color') );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_tab_sizew', \IPS\Settings::i()->sdn_tab_sizew, FALSE, array(), NULL, NULL, NULL, 'sdn_tab_sizew') );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_tab_sizeh', \IPS\Settings::i()->sdn_tab_sizeh, FALSE, array(), NULL, NULL, NULL, 'sdn_tab_sizeh') );
+$form->add( new \IPS\Helpers\Form\Select( 'sdn_tab_position', \IPS\Settings::i()->sdn_tab_position, FALSE, array(
+	'options' => array(
+		'bottom'         => 'sdn_tab_position_bottom',
+		'top'       => 'sdn_tab_position_top'
+	),
+'multiple' => FALSE) ) );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_tab_window', \IPS\Settings::i()->sdn_tab_window, FALSE, array(), NULL, NULL, NULL, 'sdn_tab_window') );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_tab_radius', \IPS\Settings::i()->sdn_tab_radius, FALSE, array(), NULL, NULL, NULL, 'sdn_tab_radius') );
+
+
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\Text( 'sdn_fonticon', \IPS\Settings::i()->sdn_fonticon, FALSE, array(), NULL, NULL, NULL, 'sdn_fonticon') );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_fonticon_size', \IPS\Settings::i()->sdn_fonticon_size, FALSE, array(), NULL, NULL, NULL, 'sdn_fonticon_size') );
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_fonticon_color', \IPS\Settings::i()->sdn_fonticon_color, FALSE, array(), NULL, NULL, NULL, 'sdn_fonticon_color') );
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_fonticon_hovercolor', \IPS\Settings::i()->sdn_fonticon_hovercolor, FALSE, array(), NULL, NULL, NULL, 'sdn_fonticon_hovercolor') );
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_fonticon_blink', \IPS\Settings::i()->sdn_fonticon_blink, FALSE, array(), NULL, NULL, NULL, 'sdn_fonticon_blink') );
+
+
+$form->addTab('sdn_custom_bar' );
+$form->addHeader( 'sdn_custom' );
+$form->addSeparator();
+$form->add( new \IPS\Helpers\Form\YesNo( 'sdn_sidebar_hide', \IPS\Settings::i()->sdn_sidebar_hide, FALSE, array(), NULL, NULL, NULL, 'sdn_sidebar_hide') );
+$form->add( new \IPS\Helpers\Form\Number( 'sdn_sidebar_width', \IPS\Settings::i()->sdn_sidebar_width, FALSE, array(), NULL, NULL, NULL, 'sdn_sidebar_width') );
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_stripe_color', \IPS\Settings::i()->sdn_stripe_color, FALSE, array(), NULL, NULL, NULL, 'sdn_stripe_color') );
+$form->add( new \IPS\Helpers\Form\Color( 'sdn_background_color', \IPS\Settings::i()->sdn_background_color, FALSE, array(), NULL, NULL, NULL, 'sdn_background_color') );
+
+
+if ( $values = $form->values() )
+{
+	$form->saveAsSettings();
+	\IPS\Lang::saveCustom( 'core', 'sdn_lgdesc_value', $values['sdn_lgdesc'] ); unset( $values['sdn_lgdesc'] );
+	\IPS\Request::i()->setCookie( 'SideNoteMessage_dismissed', NULL );
+    \IPS\Db::i()->update( 'core_members', array( 'SideNoteMessage_dismissed' => 0 ) );
+	$form->saveAsSettings();
+	return TRUE;
+}]]></settingsCode><tasks/><widgets/><htmlFiles><html filename="SideNoteMessage.phtml">PGlwczp0ZW1wbGF0ZSBwYXJhbWV0ZXJzPSIiIC8+Cgp7eyRlbmFibGVkID0gMDt9fQoKe3tpZiBzZXR0aW5ncy5zZG5fZW5hYmxlZCBhbmQgc2V0dGluZ3Muc2RuX2RhdGVfc3RhcnQgPCB0aW1lKCkgYW5kIChzZXR0aW5ncy5zZG5fZGF0ZV9lbmQgPT0gMCBPUiBzZXR0aW5ncy5zZG5fZGF0ZV9lbmQgPiB0aW1lKCkpIGFuZCAhbWVtYmVyLlNpZGVOb3RlTWVzc2FnZV9kaXNtaXNzZWQgYW5kICFpc3NldCggY29va2llLlNpZGVOb3RlTWVzc2FnZV9kaXNtaXNzZWQgKX19Cgl7e2lmIHNldHRpbmdzLnNkbl9ncm91cHMgPT0gJ2FsbCcgb3IgXElQU1xNZW1iZXI6OmxvZ2dlZEluKCktPmluR3JvdXAoIGV4cGxvZGUoJywnLCBzZXR0aW5ncy5zZG5fZ3JvdXBzICkgKX19CgkJe3skZW5hYmxlZCAgPSAxO319Cgl7e2VuZGlmfX0Ke3tlbmRpZn19Cgp7eyRVUkx2aXNpYmxlID0gMDt9fQp7e2lmIHNldHRpbmdzLnNkbl9hZG1pbl92aXNpYmxlIGFuZCBcSVBTXE1lbWJlcjo6bG9nZ2VkSW4oKS0+aW5Hcm91cCggZXhwbG9kZSgnLCcsIHNldHRpbmdzLnNkbl9hZG1pbl9ncm91cHMgKSApfX0KCXt7JFVSTHZpc2libGUgPSAxO319Cnt7ZW5kaWZ9fQoKICAgIHt7aWYgJGVuYWJsZWQgPT0gMX19CgkJCTxhIGNsYXNzPSdTaWRlTm90ZVRhYicgZGF0YS1pcHNEaWFsb2cgZGF0YS1pcHNEaWFsb2ctY29udGVudD0nI2VsU05NRGlhbG9nJyBkYXRhLWlwc0RpYWxvZy1zaXplPSd7ZXhwcmVzc2lvbj0iXElQU1xTZXR0aW5nczo6aSgpLT5zZG5fbW9kYWxfc2l6ZSJ9JyAgZGF0YS1pcHNEaWFsb2ctdGl0bGU9IntleHByZXNzaW9uPSJcSVBTXFNldHRpbmdzOjppKCktPnNkbl90aXRsZSJ9IiBkYXRhLWlwc1Rvb2x0aXAgdGl0bGU9IntleHByZXNzaW9uPSJcSVBTXFNldHRpbmdzOjppKCktPnNkbl9zdGRlc2MifSI+PC9hPgogICAge3tpZiBzZXR0aW5ncy5zZG5fc2lkZWJhcl9oaWRlID09IDB9fQoJCQkgIDxkaXYgY2xhc3M9J1NpZGVOb3RlQmFyJz48L2Rpdj4KICAgIHt7ZW5kaWZ9fQoJCQkgICAgPGRpdiBpZD0nZWxTTk1EaWFsb2cnIGNsYXNzPSdpcHNIaWRlIGlwc1BhZCc+CgkJCQkgICAgIDxwIGNsYXNzPSdpcHNUeXBlX3Jlc2V0IGlwc1NwYWNlcl9ib3R0b20gaXBzVHlwZV9ub3JtYWwnPgogICAgICAgICAgICAgICB7bGFuZz0ic2RuX2xnZGVzY192YWx1ZSJ9CgkJCQkgICAgPC9wPgogICAge3tpZiBzZXR0aW5ncy5zZG5faW5mb2JveF9lbmFibGVkfX0KCSAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdpcHNNZXNzYWdlIFNpZGVOb3RlSW5mb0JveCc+CiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3M9IlNpZGVOb3RlSW5mb0JveEljb24iPntleHByZXNzaW9uPSJcSVBTXFNldHRpbmdzOjppKCktPnNkbl9pbmZvYm94X2NvbnRlbnQifSA8L3NwYW4+CiAgICB7e2lmIHNldHRpbmdzLnNkbl9pbmZvYm94X3Nob3d0aW1lID09IDF9fQogICAgICAgICAgICAgICAgICAgIDxicj48c3Ryb25nPlN0YXJ0IFRpbWU6PC9zdHJvbmc+IHtkYXRldGltZT0iXElQU1xTZXR0aW5nczo6aSgpLT5zZG5fZGF0ZV9zdGFydCIgbm9yZWxhdGl2ZT0iZmFsc2UifSA8PiA8c3Ryb25nPkVuZCBUaW1lOjwvc3Ryb25nPiB7ZGF0ZXRpbWU9IlxJUFNcU2V0dGluZ3M6OmkoKS0+c2RuX2RhdGVfZW5kIiBub3JlbGF0aXZlPSJmYWxzZSJ9CiAgICB7e2VuZGlmfX0KICAgICAgICAgICAgICAgPC9kaXY+CiAge3tlbmRpZn19CgkJCXt7aWYgc2V0dGluZ3Muc2RuX2hpZGV9fQoJCQkJICAgPGRpdiBpZD0iU2lkZU5vdGVNZXNzYWdlX2Rpc21pc3MiPgoJCQkJCSAgPGEgY2xhc3M9Imlwc0J1dHRvbiBpcHNCdXR0b25fdmVyeVNtYWxsIGlwc0J1dHRvbl9pbXBvcnRhbnQgaXBzQnV0dG9uX2Z1bGxXaWR0aCIgaHJlZj0ie3VybD0iYXBwPWNvcmUmbW9kdWxlPXN5c3RlbSZzZWN0aW9uPXBsdWdpbnMmZG89U2lkZU5vdGVEaXNtaXNzIiBjc3JmPSIxIn0iIGRhdGEtaXBzdG9vbHRpcCB0aXRsZT0ie2xhbmc9J3Nkbl9oaWRlX3Rvb2x0aXAnfSIgZGF0YS1hY3Rpb249ImRpc21pc3MiPntsYW5nPSdzZG5faGlkZV90b29sdGlwJ308L2E+CgkJCQkgICA8L2Rpdj4KCQkJe3tlbmRpZn19CiAgICAgICAgICAgIDwvZGl2Pgp7e2VuZGlmfX0=</html></htmlFiles><cssFiles><css filename="sidenote.css">LyogU2lkZU5vdGUgKi8KCiNTaWRlTm90ZU1lc3NhZ2VfZGlzbWlzcyB7CgltYXJnaW4tdG9wOiA1cHg7Cn0KCiNlbFNOTURpYWxvZyB7Cgp9CgouU2lkZU5vdGVCYXIgewoJcG9zaXRpb246IGZpeGVkOwoJYm90dG9tOiAwOwoJdG9wOiAwOwoJd2lkdGg6IHtzZXR0aW5nPSJzZG5fc2lkZWJhcl93aWR0aCJ9cHg7CgliYWNrZ3JvdW5kLWNvbG9yOiB7c2V0dGluZz0ic2RuX2JhY2tncm91bmRfY29sb3IifTsKCWJhY2tncm91bmQtaW1hZ2U6IC13ZWJraXQtZ3JhZGllbnQobGluZWFyLCAwIDEwMCUsIDEwMCUgMCwgY29sb3Itc3RvcCgwLjI1LCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9KSwgY29sb3Itc3RvcCgwLjI1LCB0cmFuc3BhcmVudCksIGNvbG9yLXN0b3AoMC41LCB0cmFuc3BhcmVudCksIGNvbG9yLXN0b3AoMC41LCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9KSwgY29sb3Itc3RvcCgwLjc1LCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9KSwgY29sb3Itc3RvcCgwLjc1LCB0cmFuc3BhcmVudCksIHRvKHRyYW5zcGFyZW50KSk7CgliYWNrZ3JvdW5kLWltYWdlOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCgtNDVkZWcsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gMjUlLCB0cmFuc3BhcmVudCAyNSUsIHRyYW5zcGFyZW50IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA1MCUsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gNzUlLCB0cmFuc3BhcmVudCA3NSUsIHRyYW5zcGFyZW50KTsKCWJhY2tncm91bmQtaW1hZ2U6IC1tb3otbGluZWFyLWdyYWRpZW50KC00NWRlZywge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSAyNSUsIHRyYW5zcGFyZW50IDI1JSwgdHJhbnNwYXJlbnQgNTAlLCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA3NSUsIHRyYW5zcGFyZW50IDc1JSwgdHJhbnNwYXJlbnQpOwoJYmFja2dyb3VuZC1pbWFnZTogLW8tbGluZWFyLWdyYWRpZW50KC00NWRlZywge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSAyNSUsIHRyYW5zcGFyZW50IDI1JSwgdHJhbnNwYXJlbnQgNTAlLCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA3NSUsIHRyYW5zcGFyZW50IDc1JSwgdHJhbnNwYXJlbnQpOwoJYmFja2dyb3VuZC1pbWFnZTogbGluZWFyLWdyYWRpZW50KC00NWRlZywge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSAyNSUsIHRyYW5zcGFyZW50IDI1JSwgdHJhbnNwYXJlbnQgNTAlLCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA3NSUsIHRyYW5zcGFyZW50IDc1JSwgdHJhbnNwYXJlbnQpOwoJYmFja2dyb3VuZC1zaXplOiA4MHB4IDgwcHg7CgliYWNrZ3JvdW5kLXBvc2l0aW9uOiB0b3A7Cgl6LWluZGV4OiA1MDA7Cgl0cmFuc2l0aW9uOiAwLjJzIGJhY2tncm91bmQgZWFzZS1pbi1vdXQ7Cn0KCglodG1sW2Rpcj0ibHRyIl0gLlNpZGVOb3RlQmFyIHsKCQlsZWZ0OiAwOwoJfQoJaHRtbFtkaXI9InJ0bCJdIC5TaWRlTm90ZUJhciB7CgkJcmlnaHQ6IDA7Cgl9CgouU2lkZU5vdGVUYWIgewogICAgYm9yZGVyLXJhZGl1czogMCB7c2V0dGluZz0ic2RuX3RhYl9yYWRpdXMifXB4IHtzZXR0aW5nPSJzZG5fdGFiX3JhZGl1cyJ9cHggMDsKCXBvc2l0aW9uOiBmaXhlZDsKCSAgICAge3tpZiBzZXR0aW5ncy5zZG5fdGFiX3Bvc2l0aW9uID09ICd0b3AnfX0KCXRvcDoge3NldHRpbmc9InNkbl90YWJfd2luZG93In1weDsKCQl7e2VuZGlmfX0KCSAgICAge3tpZiBzZXR0aW5ncy5zZG5fdGFiX3Bvc2l0aW9uID09ICdib3R0b20nfX0KCWJvdHRvbToge3NldHRpbmc9InNkbl90YWJfd2luZG93In1weDsKCQl7e2VuZGlmfX0KCXdpZHRoOiB7c2V0dGluZz0ic2RuX3RhYl9zaXpldyJ9cHg7CgloZWlnaHQ6IHtzZXR0aW5nPSJzZG5fdGFiX3NpemVoIn1weDsKCWJhY2tncm91bmQtY29sb3I6IHtzZXR0aW5nPSJzZG5fdGFiX2NvbG9yIn07Cgl0ZXh0LXNoYWRvdzogMHB4IDFweCA0cHggcmdiYSgxNTEsIDExMiwgMzAsIDAuNSk7Cgl0ZXh0LWFsaWduOiBjZW50ZXI7CglsaW5lLWhlaWdodDoge3NldHRpbmc9InNkbl90YWJfc2l6ZWgifXB4OwoJei1pbmRleDogMTA7Cgl0cmFuc2l0aW9uOiAwLjJzIGJhY2tncm91bmQgZWFzZS1pbi1vdXQ7Cn0KCi5TaWRlTm90ZVRhYjphZnRlciB7CgkgICAgIHt7aWYgc2V0dGluZ3Muc2RuX2ZvbnRpY29uX2JsaW5rfX0KCWFuaW1hdGlvbjogYmxpbmtlciAxcyBzdGVwLXN0YXJ0IGluZmluaXRlOwoJCXt7ZW5kaWZ9fQoJY29udGVudDogJ1x7c2V0dGluZz0ic2RuX2ZvbnRpY29uIn0nOwogICAgZm9udC1mYW1pbHk6IEZvbnRBd2Vzb21lOwoJZm9udC1zaXplOiB7c2V0dGluZz0ic2RuX2ZvbnRpY29uX3NpemUifXB4OwoJY29sb3I6IHtzZXR0aW5nPSJzZG5fZm9udGljb25fY29sb3IifTsKfQoKQGtleWZyYW1lcyBibGlua2VyIHsKICA1MCUgewogICAgb3BhY2l0eTogMDsKICB9Cn0KCi5TaWRlTm90ZVRhYjpob3ZlcjphZnRlciB7Cgljb2xvcjoge3NldHRpbmc9InNkbl9mb250aWNvbl9ob3ZlcmNvbG9yIn07Cn0KCgkuU2lkZU5vdGVUYWI6aG92ZXIgewoJCWN1cnNvcjogaGVscDsKCX0KCglodG1sW2Rpcj0ibHRyIl0gLlNpZGVOb3RlVGFiIHsKCQlsZWZ0OiAwOwoJfQoJaHRtbFtkaXI9InJ0bCJdIC5TaWRlTm90ZVRhYiB7CgkJcmlnaHQ6IDA7Cgl9CgouU2lkZU5vdGVJbmZvQm94IHsKICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7CgliYWNrZ3JvdW5kOiB7c2V0dGluZz0ic2RuX2luZm9ib3hfY29sb3IifTsKfQoKLlNpZGVOb3RlSW5mb0JveEljb24gewoJZm9udC1zaXplOiB7c2V0dGluZz0ic2RuX2luZm9ib3hfZm9udGljb25fc2l6ZSJ9cHg7Cn0KCi5TaWRlTm90ZUluZm9Cb3hJY29uOmJlZm9yZSB7Cgljb250ZW50OiAnXHtzZXR0aW5nPSJzZG5faW5mb2JveF9mb250aWNvbiJ9JzsKICAgIGZvbnQtZmFtaWx5OiBGb250QXdlc29tZTsKICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgIG1hcmdpbi1yaWdodDogMC4zcmVtOwp9CgovKiBQSE9ORVMgKi8KQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzY3cHgpIHsKCi5TaWRlTm90ZUJhciB7Cglwb3NpdGlvbjogZml4ZWQ7Cglib3R0b206IDA7Cgl0b3A6IDA7Cgl3aWR0aDogNXB4OwoJYmFja2dyb3VuZC1jb2xvcjoge3NldHRpbmc9InNkbl9iYWNrZ3JvdW5kX2NvbG9yIn07CgliYWNrZ3JvdW5kLWltYWdlOiAtd2Via2l0LWdyYWRpZW50KGxpbmVhciwgMCAxMDAlLCAxMDAlIDAsIGNvbG9yLXN0b3AoMC4yNSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSksIGNvbG9yLXN0b3AoMC4yNSwgdHJhbnNwYXJlbnQpLCBjb2xvci1zdG9wKDAuNSwgdHJhbnNwYXJlbnQpLCBjb2xvci1zdG9wKDAuNSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSksIGNvbG9yLXN0b3AoMC43NSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSksIGNvbG9yLXN0b3AoMC43NSwgdHJhbnNwYXJlbnQpLCB0byh0cmFuc3BhcmVudCkpOwoJYmFja2dyb3VuZC1pbWFnZTogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQoLTQ1ZGVnLCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9IDI1JSwgdHJhbnNwYXJlbnQgMjUlLCB0cmFuc3BhcmVudCA1MCUsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gNTAlLCB7c2V0dGluZz0ic2RuX3N0cmlwZV9jb2xvciJ9IDc1JSwgdHJhbnNwYXJlbnQgNzUlLCB0cmFuc3BhcmVudCk7CgliYWNrZ3JvdW5kLWltYWdlOiAtbW96LWxpbmVhci1ncmFkaWVudCgtNDVkZWcsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gMjUlLCB0cmFuc3BhcmVudCAyNSUsIHRyYW5zcGFyZW50IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA1MCUsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gNzUlLCB0cmFuc3BhcmVudCA3NSUsIHRyYW5zcGFyZW50KTsKCWJhY2tncm91bmQtaW1hZ2U6IC1vLWxpbmVhci1ncmFkaWVudCgtNDVkZWcsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gMjUlLCB0cmFuc3BhcmVudCAyNSUsIHRyYW5zcGFyZW50IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA1MCUsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gNzUlLCB0cmFuc3BhcmVudCA3NSUsIHRyYW5zcGFyZW50KTsKCWJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCgtNDVkZWcsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gMjUlLCB0cmFuc3BhcmVudCAyNSUsIHRyYW5zcGFyZW50IDUwJSwge3NldHRpbmc9InNkbl9zdHJpcGVfY29sb3IifSA1MCUsIHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn0gNzUlLCB0cmFuc3BhcmVudCA3NSUsIHRyYW5zcGFyZW50KTsKCWJhY2tncm91bmQtc2l6ZTogNDBweCA0MHB4OwoJYmFja2dyb3VuZC1wb3NpdGlvbjogdG9wOwoJei1pbmRleDogNTAwOwoJdHJhbnNpdGlvbjogMC4ycyBiYWNrZ3JvdW5kIGVhc2UtaW4tb3V0Owp9CgoJLlNpZGVOb3RlVGFiIHsKICAgIGJvcmRlci1yYWRpdXM6IDAgMjBweCAyMHB4IDA7Cglwb3NpdGlvbjogZml4ZWQ7Cglib3R0b206IDEwcHg7Cgl3aWR0aDogMzVweDsKCWhlaWdodDogMzBweDsKCWJhY2tncm91bmQtY29sb3I6IHtzZXR0aW5nPSJzZG5fc3RyaXBlX2NvbG9yIn07Cgl0ZXh0LXNoYWRvdzogMHB4IDFweCA0cHggcmdiYSgxNTEsIDExMiwgMzAsIDAuNSk7Cgl0ZXh0LWFsaWduOiBjZW50ZXI7CglsaW5lLWhlaWdodDogMzBweDsKCXotaW5kZXg6IDEwOwoJdHJhbnNpdGlvbjogMC4ycyBiYWNrZ3JvdW5kIGVhc2UtaW4tb3V0OwoJfQoKLlNpZGVOb3RlVGFiOmFmdGVyIHsKCSAgICAge3tpZiBzZXR0aW5ncy5zZG5fZm9udGljb25fYmxpbmt9fQoJYW5pbWF0aW9uOiBibGlua2VyIDFzIHN0ZXAtc3RhcnQgaW5maW5pdGU7CgkJe3tlbmRpZn19Cgljb250ZW50OiAnXHtzZXR0aW5nPSJzZG5fZm9udGljb24ifSc7CiAgICBmb250LWZhbWlseTogRm9udEF3ZXNvbWU7Cglmb250LXNpemU6IDE0cHg7Cgljb2xvcjoge3NldHRpbmc9InNkbl9mb250aWNvbl9jb2xvciJ9Owp9Cgp9</css></cssFiles><jsFiles><js filename="sidenote.js">OyggZnVuY3Rpb24oJCwgXywgdW5kZWZpbmVkKXsKCSJ1c2Ugc3RyaWN0IjsKCQoJaXBzLmNvbnRyb2xsZXIucmVnaXN0ZXIoJ3BsdWdpbnMuc2lkZW5vdGUnLCB7CgkKCQlpbml0aWFsaXplOiBmdW5jdGlvbiAoKSB7CgkJCXRoaXMub24oICdjbGljaycsICdbZGF0YS1hY3Rpb249ImRpc21pc3MiXScsIHRoaXMuZGlzbWlzcyApOwoJCX0sCgkJCgkJZGlzbWlzczogZnVuY3Rpb24gKGUpIHsKCQkJZS5wcmV2ZW50RGVmYXVsdCgpOwoJCQl2YXIgdXJsID0gJCggZS5jdXJyZW50VGFyZ2V0ICkuYXR0cignaHJlZicpOwoJCQl2YXIgbWVzc2FnZSA9ICQodGhpcy5zY29wZSk7CgkJCQoJCQlpcHMuZ2V0QWpheCgpKHVybCkuZG9uZShmdW5jdGlvbigpewoJCQkJaXBzLnV0aWxzLmFuaW0uZ28oICdmYWRlT3V0JywgbWVzc2FnZSApOwoJCQkJLy90aGlzLnNjb3BlLnNsaWRlVXAoKTsKCQkJfSkuZmFpbChmdW5jdGlvbigpewoJCQkJd2luZG93LmxvY2F0aW9uID0gdXJsOwoJCQl9KTsKCQl9CgoJfSk7Cn0oalF1ZXJ5LCBfKSk7</js></jsFiles><resourcesFiles/><lang><word key="sdn_configure" js="0">SideNote Configure</word><word key="sdn_content" js="0">SideNote Content</word><word key="sdn_custom" js="0">SideNote Customize</word><word key="sdn_infobox" js="0">SideNote InfoBox</word><word key="sdn_custom_bar" js="0">SideNote Bar</word><word key="sdn_custom_tab" js="0">SideNote Tab</word><word key="sdn_enabled" js="0">SideNote Enable</word><word key="sdn_title" js="0">Main Title</word><word key="sdn_title_desc" js="0">Simple and short title for your side note modal.</word><word key="sdn_stdesc" js="0">Side Note Icon Hover Text</word><word key="sdn_stdesc_desc" js="0">Short description of no more than a sentence that will appear on hover over icon</word><word key="sdn_lgdesc" js="0">Full SideNote Content</word><word key="sdn_lgdesc_desc" js="0">Full description and details on the side note content</word><word key="sdn_moreinfo" js="0">Additional Information</word><word key="sdn_moreinfo_desc" js="0">Add additional details and information that will show in a container</word><word key="sdn_fonticon" js="0">FontAwesome SideNote Tab Icon</word><word key="sdn_fonticon_desc" js="0"><![CDATA[Use the UNICODE symbol for the icon available at <a href='https://fontawesome.com/icons' target='_blank'>FontAwesome</a>]]></word><word key="sdn_background_color" js="0">Side Note Bar Background Color</word><word key="sdn_stripe_color" js="0">Side Note Bar Stripe Color</word><word key="sdn_sidebar_width" js="0">Side Note Bar Width in Pixels</word><word key="sdn_fonticon_size" js="0">FontAwesome Icon Size in Pixels</word><word key="sdn_fonticon_hovercolor" js="0">FontAwesome Hover Color</word><word key="sdn_fonticon_color" js="0">FontAwesome Color</word><word key="sdn_groups" js="0">Allowed Groups</word><word key="sdn_hide" js="0">Members Can Dismiss SideNote Notification?</word><word key="sdn_hide_desc" js="0">When enabled, members can click button to dismiss the side note only after opening the modal</word><word key="sdn_date_start" js="0">Start Date</word><word key="sdn_date_end" js="0">End Date</word><word key="sdn_modal_size" js="0">Modal Size</word><word key="sdn_modal_size_narrow" js="0">Narrow</word><word key="sdn_modal_size_medium" js="0">Medium</word><word key="sdn_modal_size_large" js="0">Large</word><word key="sdn_modal_size_wide" js="0">Wide</word><word key="sdn_modal_size_fullscreen" js="0">Fullscreen</word><word key="sdn_infobox_fonticon" js="0">FontAwesome icon</word><word key="sdn_infobox_fonticon_desc" js="0"><![CDATA[Use the UNICODE symbol for the icon available at <a href='https://fontawesome.com/icons' target='_blank'>FontAwesome</a>]]></word><word key="sdn_infobox_fonticon_size" js="0">FontAwesome Icon Size in Pixels</word><word key="sdn_infobox_content" js="0">Info Box Text (optional)</word><word key="sdn_infobox_content_desc" js="0"/><word key="sdn_infobox_enabled" js="0">Enable Info Box?</word><word key="sdn_infobox_enabled_desc" js="0">Info Box will show a small box above the main content with text info and time stamps</word><word key="sdn_infobox_color" js="0">Info Box Background Color</word><word key="sdn_infobox_showtime" js="0">Show the Start and End Times</word><word key="sdn_fonticon_blink" js="0">Blinking Icon?</word><word key="sdn_fonticon_blink_desc" js="0">The Icon in the Side Note Tab will blink getting users attention</word><word key="sdn_hide_tooltip" js="0">Click to Dismiss this Notification</word><word key="sdn_sidebar_hide" js="0">Hide the Side Bar?</word><word key="sdn_sidebar_hide_desc" js="0">When enabled, the side bar will not show only the tab</word><word key="sdn_tab_color" js="0">Tab Background Color</word><word key="sdn_tab_window" js="0">Window Spacing</word><word key="sdn_tab_window_desc" js="0">By default the tab is positioned at bottom and 10px off bottom but you can move it for better visibility or if its blocking a element on the page. Number is in pixels and will effect top and bottom positioning respectively</word><word key="sdn_tab_sizew" js="0">Tab Width</word><word key="sdn_tab_sizeh" js="0">Tab Height</word><word key="sdn_tab_radius" js="0">Tab Radius</word><word key="sdn_tab_radius_desc" js="0">In pixels the rounded corers of the tab, higher the number more pronounced the roundness, 0 is square no rounded corners</word><word key="sdn_tab_position" js="0">Tab Position</word><word key="sdn_tab_position_bottom" js="0">Page Bottom</word><word key="sdn_tab_position_top" js="0">Page Top</word><word key="sdn_configure_pages" js="0">Page Preferences</word><word key="sdn_configure_pages_typew" js="0">Whitelist</word><word key="sdn_configure_pages_typeb" js="0">Blacklist</word><word key="sdn_configure_pages_type" js="0">Page List Type</word><word key="sdn_configure_pages_list" js="0">Page List URLs</word></lang><versions><version long="10000" human="1.0.0"><![CDATA[//<?php
+
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !\defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	header( ( isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0' ) . ' 403 Forbidden' );
+	exit;
+}
+
+/**
+ * Install Code
+ */
+class ips_plugins_setup_install
+{
+	/**
+	 * ...
+	 *
+	 * @return	array	If returns TRUE, upgrader will proceed to next step. If it returns any other value, it will set this as the value of the 'extra' GET parameter and rerun this step (useful for loops)
+	 */
+	public function step1()
+	{
+		
+		\IPS\Db::i()->addColumn( 'core_members', array(
+			'name'		=> 'SideNoteMessage_dismissed',
+			'type'		=> 'BIT',
+			'length'	=> 1,
+			'null'		=> FALSE,
+			'default'	=> 0,
+			'comment'	=> 'If 1, user has dismissed the side note'
+		) );
+		return TRUE;
+	}
+
+}]]></version></versions></plugin>

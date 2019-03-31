@@ -35,6 +35,8 @@
 
 ![devCUHead](https://www.devcu.net/mediasrc/example1.PNG?V=1.0)
 
+![devCUHead](https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0)
+
 ![devCUHead](https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0)
 
 ## Features
@@ -55,7 +57,7 @@ Import SideNote.xml via Install New Plugin in IPS ACP
 03/30/19
 
 - Working stable release available in /src folder
-- Created for IPS 4.3 and working fne in 4.4 as well
+- IPS 4.4 version updated for PHP root /defined
 - Please report and issues, feature requests, or suggestions in Issues
 - NOTE: Page Preferences settings are currently disabled temporarily
 
