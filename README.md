@@ -29,11 +29,6 @@
                 '--------------------------'
 </pre>
 
-
-```diff
-- WARNING!! THIS IS AN INCOMPLETE DEVELOPMENT VERSION AND SHOULD NOT BE USED IN A PRODUCTION ENVIRONMENT!
-```
-
 # IPS-SideNote
 
 #### A multi configurable, highly customizable and immediately visible message and information plug-in for IPS 4 Community Suite
