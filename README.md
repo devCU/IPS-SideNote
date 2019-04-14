@@ -43,8 +43,8 @@
 
 - Modal sizes: Narrow, Medium, Large, Full screem
 - Page Preferences - White/Black list options
-- Page Address Notifications - Admin/Staff page address notifications via toastr _NEW!_
-- Option to disable dismiss for guests only _NEW!_
+- Page Address Notifications - Admin/Staff page address notifications via toastr **_NEW!_**
+- Option to disable dismiss for guests only **_NEW!_**
 - Custom FontAwesome icons
 - Custom Colors and look
 - Mesage box with date and time stamps
