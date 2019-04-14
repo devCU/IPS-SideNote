@@ -63,7 +63,6 @@ Import SideNote.xml via Install New Plugin in IPS ACP
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report and issues, feature requests, or suggestions in Issues
-- NOTE: Page Preferences settings are currently disabled temporarily
 
 
 ## License
