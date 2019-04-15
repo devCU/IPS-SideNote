@@ -45,6 +45,7 @@
 - Page Preferences - White/Black list options
 - Page Address Notifications - Admin/Staff page address notifications via toastr _NEW!_
 - Option to disable dismiss for guests only _NEW!_
+- Option to spin icons _NEW!_
 - Custom FontAwesome icons
 - Custom Colors and look
 - Mesage box with date and time stamps
@@ -56,9 +57,9 @@ Import SideNote.xml via Install New Plugin in IPS ACP
 
 ## ** Updated Notes **
 
-04/14/19
+04/15/19
 
-- New release 1.0.1 for some minor issues and feature updates and additions.
+- New release 1.0.1 for some minor issues and feature updates/additions.
 - Added toastr notifications for page addresses
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
