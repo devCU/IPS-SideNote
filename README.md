@@ -33,11 +33,9 @@
 
 #### Inspired by IPS dev mode message, SideNote is a highly customizable and immediately visible plug-in for IPS 4 Community Suite. A colorful (Side) bar that pops up a (Note) message on click. Out of the way to the side but instantly noticed. Visitors to your site will click on this first everytime. Can be used for anything including site information, holiday greetings, announcements, special offers/advertisements and anything else you want to make your sites visitors aware of.
 
-![devCUHead](https://www.devcu.net/mediasrc/example1.PNG?V=1.0)
-
-![devCUHead](https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0)
-
-![devCUHead](https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0)
+<img src="https://www.devcu.net/mediasrc/example1.PNG?V=1.0" width="30%"></img>
+<img src="https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0" width="30%"></img>
+<img src="https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0" width="30%"></img>
 
 ## Features
 
@@ -64,7 +62,6 @@ Import SideNote.xml via Install New Plugin in IPS ACP
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report and issues, feature requests, or suggestions in Issues
-- NOTE: Page Preferences settings are currently disabled temporarily
 
 
 ## License
