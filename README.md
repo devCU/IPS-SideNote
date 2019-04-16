@@ -1,12 +1,11 @@
 ![devCUHead](https://www.devcu.net/mediasrc/githubhead_2.gif?V=1.4)
 
-[![License](https://img.shields.io/badge/License-GNUv3-blue.svg)](https://github.com/devCU/IPS-SideNote/blob/master/LICENSE) [![Version](https://img.shields.io/badge/Version-1.0.1-blue.svg)](https://www.devcu.com/forums/devcu-tracker/)
-    [![Build](https://img.shields.io/badge/Build-Stable-important.svg)](https://www.devcu.com/forums/devcu-tracker/)
-    [![Status](https://img.shields.io/badge/Status-Release-brightgreen.svg)](https://www.devcu.com/forums/devcu-tracker/)
-    [![Development](https://img.shields.io/badge/Development-Active-blue.svg)](https://www.devcu.com/forums/devcu-tracker/)
-
-
-## ** Become a Patron of devCU **
+[![License](https://img.shields.io/badge/License-GNUv3-blue.svg)](https://github.com/devCU/IPS-SideNote/blob/master/LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0.1-ff69b4.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Build](https://img.shields.io/badge/Build-Stable-blueviolet.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Status](https://img.shields.io/badge/Status-Release-critical.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Development](https://img.shields.io/badge/Development-Active-success.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Platform](https://img.shields.io/badge/Platform-IPS4.3+-blue.svg)](https://www.devcu.com/forums/devcu-tracker/)
 	
 **Please support our Open Source Projects and keep this software free**
 
@@ -33,7 +32,7 @@
 
 #### Inspired by IPS dev mode message, SideNote is a highly customizable and immediately visible plug-in for IPS 4 Community Suite. A colorful (Side) bar that pops up a (Note) message on click. Out of the way to the side but instantly noticed. Visitors to your site will click on this first everytime. Can be used for anything including site information, holiday greetings, announcements, special offers/advertisements and anything else you want to make your sites visitors aware of.
 
-<img src="https://www.devcu.net/mediasrc/seasonal_sdn.gif?V=1.0" width="30%"></img>
+<img src="https://www.devcu.net/mediasrc/example1.PNG?V=1.0" width="30%"></img>
 <img src="https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0" width="32%"></img>
 <img src="https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0" width="30%"></img>
 
