@@ -32,7 +32,7 @@
 
 #### Inspired by IPS dev mode message, SideNote is a highly customizable and immediately visible plug-in for IPS 4 Community Suite. A colorful (Side) bar that pops up a (Note) message on click. Out of the way to the side but instantly noticed. Visitors to your site will click on this first everytime. Can be used for anything including site information, holiday greetings, announcements, special offers/advertisements and anything else you want to make your sites visitors aware of.
 
-<img src="https://www.devcu.net/mediasrc/seasonal_sdn.gif?V=1.0" width="30%"></img>
+<img src="https://www.devcu.net/mediasrc/seasonal_sdn.gif?V=1.1" width="30%"></img>
 <img src="https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0" width="32%"></img>
 <img src="https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0" width="30%"></img>
 
@@ -46,21 +46,36 @@
 - Custom FontAwesome icons
 - Custom Colors and look
 - Mesage box with date and time stamps
-- Hover effects, blinking icon effects, etc
+- Hover effects, image effects, etc
 - More...
-
-## Install
-Import SideNote.xml via Install New Plugin in IPS ACP
 
 ## ** Updated Notes **
 
-04/15/19
+04/18/19
 
-- New release 1.0.1 for some minor issues and feature updates/additions.
-- Added toastr notifications for page addresses
-- Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
+- New release 1.0.2 due on Easter (4/21)
+- Stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
-- Please report and issues, feature requests, or suggestions in Issues
+- Please report any issues, feature requests, or suggestions in [Issues](https://github.com/devCU/IPS-SideNote/issues)
+
+## ** 1.0.2 Changelog So Far **
+
+__Maintenance__
+- Couple Typos, more detailed descriptions of some options
+- ToggleOff when hiding sidebar
+- Return Form - Return to last active tab when editing
+- Toastr CSS improvements and overrides available in sidenote.css for customization
+- Lang bits updated
+- Code cleanup
+
+__Bug Fixes__
+- Toastr Notifications [issue #2](https://github.com/devCU/IPS-SideNote/issues/2)
+
+__New Features/Options__
+- 2 New sidebar options in addition to striped, solid and image background added.
+
+## ** Install/Upgrade **
+Import SideNote.xml via Install New Plugin in IPS ACP
 
 
 ## License
