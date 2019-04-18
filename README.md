@@ -53,10 +53,10 @@
 
 04/18/19
 
-- New release 1.0.2
+- New release 1.0.2 due on Easter (4/21)
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
-- Please report and issues, feature requests, or suggestions in Issues
+- Please report any issues, feature requests, or suggestions in [Issues](https://github.com/devCU/IPS-SideNote/issues)
 
 ## ** 1.0.2 Changelog **
 
@@ -64,8 +64,9 @@ __Maintenance__
 - Couple Typos, more detailed descriptions of some options
 - ToggleOff when hiding sidebar
 - Return Form - Return to last active tab when editing
-- Toastr CSS improvements and overrides
+- Toastr CSS improvements and overrides available in sidenote.css for customization
 - Lang bits updated
+- Code cleanup
 
 __Bug Fixes__
 - Toastr Notifications [issue #2](https://github.com/devCU/IPS-SideNote/issues/2)
