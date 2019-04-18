@@ -49,6 +49,22 @@
 - Hover effects, image effects, etc
 - More...
 
+## ** 1.0.2 Release Notes **
+
+### Maintenance
+- Several Typos, more detailed descriptions of some options
+- ToggleOff when hiding sidebar
+- Return Form - Return to last active tab when editing
+- Toastr CSS improvements and overrides
+- Lang bits updated
+
+### Bug Fixes
+- Toastr Notifications issue #2
+
+### New Features/Options
+- 3 Sidebar options, striped, solid, and image background.
+- Adding new animations
+
 ## Install
 Import SideNote.xml via Install New Plugin in IPS ACP
 
@@ -56,8 +72,7 @@ Import SideNote.xml via Install New Plugin in IPS ACP
 
 04/18/19
 
-- New release 1.0.2 coming this weekend, Fixes several bugs and a new options/features added
-- Added toastr notifications for page addresses
+- New release 1.0.2
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report and issues, feature requests, or suggestions in Issues
