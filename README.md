@@ -61,18 +61,17 @@
 ## ** 1.0.2 Changelog **
 
 __Maintenance__
-- Several Typos, more detailed descriptions of some options
+- Couple Typos, more detailed descriptions of some options
 - ToggleOff when hiding sidebar
 - Return Form - Return to last active tab when editing
 - Toastr CSS improvements and overrides
 - Lang bits updated
 
 __Bug Fixes__
-- Toastr Notifications issue #2
+- Toastr Notifications [issue #2](https://github.com/devCU/IPS-SideNote/issues/2)
 
 __New Features/Options__
-- 3 Sidebar options, striped, solid, and image background.
-- Adding new animations
+- 2 New sidebar options in addition to striped, solid and image background added.
 
 ## ** Install/Upgrade **
 Import SideNote.xml via Install New Plugin in IPS ACP
