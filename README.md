@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-GNUv3-blue.svg)](https://github.com/devCU/IPS-SideNote/blob/master/LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.1-ff69b4.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Build](https://img.shields.io/badge/Build-Stable-blueviolet.svg)](https://www.devcu.com/forums/devcu-tracker/)
-[![Status](https://img.shields.io/badge/Status-Release-brightgreen.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Status](https://img.shields.io/badge/Status-Release-critical.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Development](https://img.shields.io/badge/Development-Active-success.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Platform](https://img.shields.io/badge/Platform-IPS4.3+-blue.svg)](https://www.devcu.com/forums/devcu-tracker/)
 	
