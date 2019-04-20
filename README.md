@@ -40,7 +40,7 @@
 
 - Modal sizes: Narrow, Medium, Large, Full screem
 - Page Preferences - White/Black list options
-- Page Address Notifications - Admin/Staff page address notifications via toastr _NEW!_
+- Page Visibility Notifications - Admin/Staff page address/visibilty notifications via toastr _NEW!_
 - Option to disable dismiss for guests only _NEW!_
 - Options to animate icons _NEW!_
 - Custom FontAwesome icons
@@ -51,7 +51,7 @@
 
 ## ** Updated Notes **
 
-04/18/19
+04/19/19
 
 - New release 1.0.2 due on Easter (4/21)
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
@@ -64,7 +64,7 @@ __Maintenance__
 - Couple Typos, more detailed descriptions of some options
 - ToggleOff when hiding sidebar
 - Return Form - Return to last active tab when editing
-- Toastr CSS improvements and overrides available in sidenote.css for customization
+- Toastr CSS improvements and overrides
 - Lang bits updated
 - Code cleanup
 
@@ -73,6 +73,7 @@ __Bug Fixes__
 
 __New Features/Options__
 - 2 New sidebar options in addition to striped, solid and image background added.
+- Toastr Notifications configurations, size, style and positioning options available
 
 ## ** Install/Upgrade **
 Import SideNote.xml via Install New Plugin in IPS ACP
