@@ -66,6 +66,7 @@ __Maintenance__
 - Return Form - Return to last active tab when editing
 - Toastr CSS improvements and overrides
 - Lang bits updated
+- Mobile display improvements
 - Code cleanup
 
 __Bug Fixes__
