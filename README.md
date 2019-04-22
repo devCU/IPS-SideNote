@@ -76,7 +76,8 @@ __New Features/Options__
 - 2 New sidebar options in addition to striped, solid and image background added
 
 __BETA Features Initialized__
-_These following are non functional features/options initialized for the next release_
+
+_The following are non functional features/options initialized for the next release_
 - Toastr Notifications configurations, size, style and positioning options _BETA 1.0.3_
 
 
