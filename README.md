@@ -78,7 +78,7 @@ __New Features/Options__
 __BETA Features Initialized__
 
 _The following are non functional features/options initialized for the next release_
-- Toastr Notifications configurations, size, style and positioning options _BETA 1.0.3_
+- Toastr Notifications configurations, size, style and positioning options _BETA 1.0.3_ will coincide with [IPS-Toasted](https://github.com/devCU/IPS-Toasted) Release in May
 
 
 ## ** Install/Upgrade **
