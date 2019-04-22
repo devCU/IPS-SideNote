@@ -51,9 +51,9 @@
 
 ## ** Updated Notes **
 
-04/19/19
+04/22/19
 
-- New release 1.0.2 due on Easter (4/21)
+- New release 1.0.2
 - Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report any issues, feature requests, or suggestions in [Issues](https://github.com/devCU/IPS-SideNote/issues)
@@ -73,8 +73,12 @@ __Bug Fixes__
 - Toastr Notifications [issue #2](https://github.com/devCU/IPS-SideNote/issues/2)
 
 __New Features/Options__
-- 2 New sidebar options in addition to striped, solid and image background added.
-- Toastr Notifications configurations, size, style and positioning options available
+- 2 New sidebar options in addition to striped, solid and image background added
+
+__BETA Features Initialized__
+_These following are non functional features/options initialized for the next release_
+- Toastr Notifications configurations, size, style and positioning options _BETA 1.0.3_
+
 
 ## ** Install/Upgrade **
 Import SideNote.xml via Install New Plugin in IPS ACP
