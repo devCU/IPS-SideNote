@@ -51,10 +51,10 @@
 
 ## ** Updated Notes **
 
-04/22/19
+04/23/19
 
-- New release 1.0.2
-- Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
+- New release 1.0.2 available
+- Release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report any issues, feature requests, or suggestions in [Issues](https://github.com/devCU/IPS-SideNote/issues)
 
