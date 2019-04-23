@@ -1,7 +1,7 @@
 ![devCUHead](https://www.devcu.net/mediasrc/githubhead_2.gif?V=1.4)
 
 [![License](https://img.shields.io/badge/License-GNUv3-blue.svg)](https://github.com/devCU/IPS-SideNote/blob/master/LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.1-ff69b4.svg)](https://www.devcu.com/forums/devcu-tracker/)
+[![Version](https://img.shields.io/badge/Version-1.0.2-ff69b4.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Build](https://img.shields.io/badge/Build-Stable-blueviolet.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Status](https://img.shields.io/badge/Status-Release-critical.svg)](https://www.devcu.com/forums/devcu-tracker/)
 [![Development](https://img.shields.io/badge/Development-Active-success.svg)](https://www.devcu.com/forums/devcu-tracker/)
@@ -24,7 +24,7 @@
  \  | \  . \ ;  |   Open Source Projects   || ; / .  / |  /
   '\_\ \\ \ \ \ |                          ||/ / / // /_/'
         \\ \ \ \|       IPS SideNote       |/ / / //
-         `'-\_\_\         v 1.0.1          /_/_/-'`
+         `'-\_\_\         v 1.0.2          /_/_/-'`
                 '--------------------------'
 </pre>
 
@@ -51,10 +51,10 @@
 
 ## ** Updated Notes **
 
-04/19/19
+04/23/19
 
-- New release 1.0.2 due on Easter (4/21)
-- Working stable release for 4.3x and 4.4x available in /src folder and compressed on releases page
+- New release 1.0.2 available
+- Release for 4.3x and 4.4x available in /src folder and compressed on releases page
 - IPS 4.4 version updated for PHP root-namespace
 - Please report any issues, feature requests, or suggestions in [Issues](https://github.com/devCU/IPS-SideNote/issues)
 
@@ -73,8 +73,13 @@ __Bug Fixes__
 - Toastr Notifications [issue #2](https://github.com/devCU/IPS-SideNote/issues/2)
 
 __New Features/Options__
-- 2 New sidebar options in addition to striped, solid and image background added.
-- Toastr Notifications configurations, size, style and positioning options available
+- 2 New sidebar options in addition to striped, solid and image background added
+
+__BETA Features Initialized__
+
+_The following are non functional features/options initialized for the next release_
+- Toastr Notifications configurations, size, style and positioning options _BETA 1.0.3_ will coincide with [IPS-Toasted](https://github.com/devCU/IPS-Toasted) Release in May
+
 
 ## ** Install/Upgrade **
 Import SideNote.xml via Install New Plugin in IPS ACP
