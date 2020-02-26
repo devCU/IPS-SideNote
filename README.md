@@ -1,4 +1,4 @@
-![devCUHead](https://www.devcu.net/mediasrc/github-banner.png?V=1.0)
+![devCUHead](https://www.devcu.com/mediasrc/github-banner.png?V=1.0)
 
 [![License](https://img.shields.io/badge/License-GNUv3-blue.svg)](https://github.com/devCU/IPS-SideNote/blob/master/LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.2-ff69b4.svg)](https://www.devcu.com/devcu-tracker/)
@@ -14,7 +14,7 @@
 
 - Patrons and Donators have access to Beta and Release version up to 2 weeks before the public
 
-[![donate](https://www.devcu.net/mediasrc/patronize_devcu.png)](https://www.patreon.com/devcu/) [![donate](https://www.devcu.net/mediasrc/support_devcu.png?v=1)](https://www.devcu.com/clients/donations/)
+[![donate](https://www.devcu.com/mediasrc/patronize_devcu.png)](https://www.patreon.com/devcu/) [![donate](https://www.devcu.com/mediasrc/support_devcu.png?v=1)](https://www.devcu.com/clients/donations/)
 
     
 <pre>
@@ -35,9 +35,9 @@
 
 #### Inspired by IPS dev mode message, SideNote is a highly customizable and immediately visible plug-in for IPS 4 Community Suite. A colorful (Side) bar that pops up a (Note) message on click. Out of the way to the side but instantly noticed. Visitors to your site will click on this first everytime. Can be used for anything including site information, holiday greetings, announcements, special offers/advertisements and anything else you want to make your sites visitors aware of.
 
-<img src="https://www.devcu.net/mediasrc/seasonal_sdn.gif?V=1.1" width="30%"></img>
-<img src="https://www.devcu.net/mediasrc/sidenote20percent.gif?V=1.0" width="32%"></img>
-<img src="https://www.devcu.net/mediasrc/wxdisco_screen.gif?V=1.0" width="30%"></img>
+<img src="https://www.devcu.com/mediasrc/seasonal_sdn.gif?V=1.1" width="30%"></img>
+<img src="https://www.devcu.com/mediasrc/sidenote20percent.gif?V=1.0" width="32%"></img>
+<img src="https://www.devcu.com/mediasrc/wxdisco_screen.gif?V=1.0" width="30%"></img>
 
 ## Features
 
@@ -98,4 +98,4 @@ Please! Contact Me
 
 ## Copyrights
 
-Created for devCU Software ©2019
+Created for devCU Software ©2020
